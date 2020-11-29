@@ -10,6 +10,7 @@ run `npm install` or `yarn`
 ## npm scripts
 
 `npm run dev`: start graphiql dev server
+`npm run local`: start graphql express server locally
 
 ## deployment
 
@@ -18,6 +19,10 @@ run `npm install` or `yarn`
 (make sure you have your [aws-cli](https://aws.amazon.com/de/cli/) setup and configured)
 
 run `./deploy.sh`
+
+
+[sample-app](https://79mnn29yd3.execute-api.us-east-2.amazonaws.com/Prod/graphql)
+### Note: Make sure url must be same in the graphql playground as well. and after deployment give dynamo access to lambda policy.
 
 ### AWS Setup
 

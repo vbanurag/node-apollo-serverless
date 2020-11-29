@@ -6,8 +6,8 @@ const typeDefs = gql`
   type Metadata @cacheControl(maxAge: 300) {
     ogTitle: String
     ogDescription: String
-    ogImages: [String]
-    ogKeywords: [String]
+    ogImages: [String!]
+    ogKeywords: [String!]
   }
 
   type Query {
@@ -24,7 +24,12 @@ const resolvers = {
 };
 
 const mocks = {
-
+  Metadata: () => ({
+    ogTitle: "test",
+    ogDescription: "M",
+    ogImages: [],
+    ogKeywords: []
+  }),
 };
 
 module.exports = {

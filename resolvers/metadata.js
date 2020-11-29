@@ -42,13 +42,13 @@ const _getDataFromUrl = async url => {
     const parseText = await response.text();
     const $ = cheerio.load(parseText);
     let data = {
-        title: $('h1').text(),
-        description: $('meta[name="description"]').attr('content'),
+        title: $('h1').text() || '',
+        description: $('meta[name="description"]').attr('content') || '',
         // Get OG Values
-        ogTitle: $('meta[property="og:title"]').attr('content'),
-        ogImages: $('meta[property="og:image"]').attr('content'),
-        ogKeywords: $('meta[property="og:keywords"]').attr('content'),
-        ogDescription: $('meta[property="og:description"]').attr('content'),
+        ogTitle: $('meta[property="og:title"]').attr('content') || '',
+        ogImages: $('meta[property="og:image"]').attr('content') || [],
+        ogKeywords: $('meta[property="og:keywords"]').attr('content') || [],
+        ogDescription: $('meta[property="og:description"]').attr('content') || '',
     }
     if (data.ogTitle && data.ogTitle.trim().length === 0) {
         data.ogTitle = data.title;
@@ -78,7 +78,7 @@ const setCache = async params => {
                 console.log("error getting from dynamodb", err);
                 reject({});
             } else {
-                console.log("yay got data from dynamodb", data);
+                console.log("Save Data to dynamodb", data);
                 resolve(data);
             }
         });

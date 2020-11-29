@@ -6,7 +6,7 @@ const server = new ApolloServer(schema);
 exports.graphqlHandler = server.createHandler({
     cors: {
         origin: "*",
-        credentials: false
+        credentials: true
     },
     endpointURL: "/graphql"
 });

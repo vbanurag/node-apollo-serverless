@@ -1,4 +1,4 @@
-const { ApolloServer } = require("apollo-server-lambda");
+const { ApolloServer } = require("apollo-server-express");
 const express = require('express');
 
 const schema = require("./schema");
