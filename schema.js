@@ -1,4 +1,5 @@
 const { gql } = require("apollo-server-lambda");
+//const { gql } = require("apollo-server-express");
 const { fetchOgMetaData } = require('./resolvers/metadata.js')
 
 const typeDefs = gql`
@@ -15,11 +16,11 @@ const typeDefs = gql`
 `;
 
 const resolvers = {
-    Query: {
-        getOgMetaData(obj, args, context, info) {
-            return fetchOgMetaData(args.url);
-        },
-    }
+  Query: {
+    getOgMetaData(obj, args, context, info) {
+      return fetchOgMetaData(args.url);
+    },
+  }
 };
 
 const mocks = {
@@ -27,16 +28,16 @@ const mocks = {
 };
 
 module.exports = {
-    typeDefs,
-    resolvers,
-    mocks,
-    mockEntireSchema: false,
-    context: ({ event, context }) => ({
-        headers: event.headers,
-        functionName: context.functionName,
-        event,
-        context
-    }),
-    playground: true,
-    introspection: true,
+  typeDefs,
+  resolvers,
+  mocks,
+  mockEntireSchema: false,
+  context: ({ event, context }) => ({
+    headers: event.headers,
+    functionName: context.functionName,
+    event,
+    context
+  }),
+  playground: true,
+  introspection: true,
 };

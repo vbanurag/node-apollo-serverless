@@ -11,11 +11,6 @@ if (isLambda) {
     });
 } else {
     require("dotenv").config();
-    console.log({
-        accessKeyId: process.env.DROP_AWS_ACCESS_ID,
-        secretAccessKey: process.env.DROP_AWS_SECRET_KEY,
-        region: process.env.DROP_AWS_REGION
-    })
     AWS.config.update({
         accessKeyId: process.env.DROP_AWS_ACCESS_ID,
         secretAccessKey: process.env.DROP_AWS_SECRET_KEY,
@@ -97,11 +92,11 @@ const fetchOgMetaData = async url => {
             url: url
         }
     };
-    let _dataFound = await checkCache(params);
+    let _dataFound = await checkCache(params); //check cache if exits return from cache
     if (_dataFound && Object.keys(_dataFound).length > 0) {
         return _dataFound;
     }
-    let data = await _getDataFromUrl(url);
+    let data = await _getDataFromUrl(url); //else fetch and update the cache.
     data.url = url;
     setCache({
         TableName: 'Metadata',

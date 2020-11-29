@@ -5,7 +5,8 @@
     "author": "Anurag Sharma <vbanurag.sharma@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "dev": "nodemon index.js"
+        "dev": "nodemon index.js",
+        "local": "nodemon server.js"
     },
     "dependencies": {
         "apollo-server": "^2.9.12",
